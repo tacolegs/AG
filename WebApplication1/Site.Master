@@ -1,0 +1,394 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="WebApplication1.SiteMaster" %>
+
+<%@ Import Namespace="WebApplication1" %>
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+
+<!DOCTYPE html>
+
+<!--Oh! You know how to use "Inspect Element"! Aren't you clever! Why on earth are you looking at my code? It's hideous. I don't even like looking at it.-->
+<html lang="en" class="amber lighten-4" style="background-image:url(../images/backtexture.png);">
+    
+<head runat="server">
+     <%-- reference site http://www.tinymce.com/wiki.php --%>
+    
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="apple-touch-icon" sizes="57x57" href="images/Favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="images/Favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/Favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="images/Favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/Favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="images/Favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="images/Favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="images/Favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/Favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="images/Favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/Favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/Favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/Favicon/favicon-16x16.png">
+<link rel="manifest" href="images/Favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="images/Favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#B71C1C">
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/Favicon/favicon.ico" />
+    <!--Import Google Icon Font-->
+     
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %></title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    
+</head>
+<body  class="amber lighten-4">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <style>
+        body {
+            font-family: fontin;
+            background-image:url(../images/backtexture.png);
+            background-repeat: repeat;
+
+        }
+
+    </style>
+
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+<style type="text/css">
+  /*ul {list-style: none;padding: 0px;margin: 0px;}
+  li ul {display: none;}
+  ul li a {display: block;padding: 5px 10px 5px 10px;text-decoration: none;
+           white-space: nowrap;}
+  li:hover ul {display: block; position: absolute;}
+  li:hover li {float: none;}
+  #drop-nav li ul li {border-top: 0px;}*/
+
+  html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}
+
+.demo {
+  margin: 0 auto;
+  padding-top: 64px;
+  max-width: 640px;
+  width: 94%;
+}
+
+.demo h1 {
+  margin-top: 0;
+}
+
+/**
+ * Footer Styles
+ */
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+           .input-field input[type=text]:focus {
+     border-bottom: 1px solid #fff;
+     box-shadow: 0 1px 0 0 #fff;
+   }
+              .input-field input[type=text].valid {
+     border-bottom: 1px solid #fff;
+     box-shadow: 0 1px 0 0 #fff;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #fff;
+     box-shadow: 0 1px 0 0 #fff;
+   }
+   a {
+       
+   }
+    a:hover {
+        text-decoration: none;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+        background-color: #c62828;
+
+    }
+    .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > li > a {
+        background-color: #b71c1c;
+    } 
+</style>
+
+        <div class="red darken-4 navbar navbar-inverse navbar-fixed-top">
+            <div class=" container" style="width:100%">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle button-collapse" data-toggle="collapse" data-activates="slide-out">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                                                <ul id="slide-out" class="side-nav">
+      <li><div class="userView">
+      <a href="#!user"><%=nottrip.getpic(Session("USER_ID")) %></a>
+      <a style="color:#B71c1c;font-weight:bold;" href="#!name"><span class=" name"><%= getname("full") %></span></a>
+      <a style="color:#B71c1c;font-weight:bold;" href="#!email"><span class="email"><%= getemail() %></span></a>
+      </div></li>
+
+    <li><div class="divider"></div></li>
+    <li><a runat="server" style="color:white;height:100%;margin-left:5px;" visible="false" class="btn btn-default red darken-4" id="button5" href="~/account/post.aspx">Post</a></li>
+    <li><a runat="server" style="color:white;height:100%;margin-left:5px;" visible="false" class="btn btn-default red darken-4" id="button6" href="~/account/editdash.aspx">Edit</a></li>
+    <li><a runat="server" style="color:white;height:100%;margin-left:5px;" visible="false" class="btn btn-default red darken-4" id="button7">Logout</a></li>
+    <li><a runat="server" style="color:white;height:100%;margin-left:5px;" visible="false" class="btn btn-default red darken-4" id="button9" href="~/account/uboard.aspx">Dashboard</a></li>
+
+    
+    <li><div class="divider"></div></li>
+
+    <li><a runat="server" style="color:white;height:100%;margin-left:5px;border:0px;" class="waves-effect btn btn-default red darken-4" href="~/">Home</a></li>
+    <li><a runat="server"  style="color:white;height:100%;margin-left:5px;" class="waves-effect btn btn-default red  darken-4" href="~/About">About</a></li>
+    <li><a runat="server"  style="color:white;height:100%;margin-left:5px;" class="waves-effect btn btn-default red darken-4" href="~/Contact">Contact</a></li>
+    <li><a runat="server" style="color:white;height:100%;margin-left:5px;" class="btn red darken-4" id="button8" href="~/account/login.aspx">Login</a></li>
+                               
+
+  </ul>
+                    <a class="white-text navbar-brand" style="margin-left:10px;" runat="server" href="~/">The Alleged Gentlemen</a>
+                </div>
+               
+      
+  
+                <div  id="drop-nav" class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                       
+                        <li><a runat="server" style="color:white;height:100%;margin-left:5px;border:0px;border-radius:0px;" class="btn" href="~/">Home</a></li>
+                        <li><a runat="server"  style="color:white;height:100%;margin-left:5px;border-radius:0px;" class="btn" href="~/About">About</a></li>
+                        <li><a runat="server"  style="color:white;height:100%;margin-left:5px;border-radius:0px;" class="btn" href="~/Contact">Contact</a></li>
+                        <li>
+
+                        <li><a class='dropdown-button btn' style="color:white;height:100%;margin-left:5px;border-radius:0px;" href='#' data-activates='dropdown1' data-beloworigin='true' data-hover='true' data-constrainwidth='true'>articles</a>
+
+  <!-- Dropdown Structure -->
+  <ul style="color:#B71c1c;" id='dropdown1' class='dropdown-content'>
+    <li><a style="color:#b71c1c;" href="../categories.aspx?cat=1">Theology</a></li>
+    <li><a style="color:#b71c1c;" href="../categories.aspx?cat=2">Modernity</a></li>
+    <li><a style="color:#b71c1c;" href="../categories.aspx?cat=3">Politics</a></li>
+      <li><a style="color:#b71c1c;" href="../categories.aspx?cat=4">Hedonism</a></li>
+  </ul></li>
+</ul>
+                                      
+
+
+     
+  
+
+                    
+           
+                            <ul class="nav navbar-nav navbar-right" style="padding-right:15px;height:50px;">
+                                <li>
+                                    <li><a id="userdrop" visible="false" class='dropdown-button btn' runat="server" style="color:#b71c1c;background-color:white;height:100%;margin-left:5px;border-radius:0px;" href='#' data-activates='dropdown2' data-beloworigin='true' data-hover='true' data-alignment="right">User</a>
+                                    <ul style="color:#B71c1c;" id='dropdown2' class='dropdown-content'>
+                                    <li><%=nottrip.getpic(Session("USER_ID")) %></li>
+                                        <li class="divider"></li>
+                                        <li><a runat="server" style="background-color:white;color:#B71c1c;height:100%;border-radius:0px;" visible="false" class="btn btn-default" id="button1" href="~/account/post.aspx">Post</a></li>
+                                <li runat="server" visible="false" id="dammit"><a runat='Server' style='background-color: white;color:#B71c1c;height:100%;border-radius:0px;' class='btn btn-default' id='button4' href='~/account/editdash.aspx'></a></li>
+                               <li><a runat="server" style="background-color:white;color:#B71c1c;height:100%;border-radius:0px;" visible="false" class="btn btn-default" id="button10" href="~/account/uboard.aspx">Dash</a></li>
+                                        <li runat="server" visible="false" id="Li1"><a runat='Server' style='background-color: white;color:#B71c1c;height:100%;border-radius:0px;' class='btn btn-default' id='A1' href='~/account/rules.aspx'>Rules</a></li>
+                                        <li><a runat="server" style="background-color:white;color:#B71c1c;height:100%;border-radius:0px;" visible="false" class="btn btn-default" id="button2">Logout</a></li>
+                                    </ul>
+
+                                    </li>
+
+                                
+                                <li><a runat="server" style="background-color:white;color:#B71c1c;height:100%;margin-left:5px;border-radius:0px;" class="btn btn-default" id="button3" href="~/account/login.aspx">Login</a></li>
+                                
+                                 
+                                
+                                <%--<li style="height:100%;"><asp:Button ID="Button1" runat="server" Text="Post" Visible="False" style="color:#b71c1c;margin-left:5px;height:100%;" cssclass="btn btn-default white"/></li>
+                                 <li style="height:100%;"><asp:Button ID="Button4" runat="server" Visible="False" style="color:#b71c1c;margin-left:5px;height:100%;" cssclass="btn btn-default white"/></li>
+                                <li style="height:100%;"><asp:Button ID="Button2" runat="server" Text="Logout" Visible="False" style="color:#b71c1c;margin-left:5px;height:100%;" cssclass="btn btn-default white"/></li>
+                                <li style="height:100%;"><asp:Button ID="Button3" runat="server" Text="Login" style="color:#b71c1c;margin-left:5px;height:100%;" cssclass="btn btn-default white"/></li>
+                               <li style="height:100%;"><asp:Button ID="Button10" runat="server" Text="Dashboard" Visible="False" style="color:#b71c1c;margin-left:5px;height:100%;" cssclass="btn btn-default white"/></li>--%>
+                                
+                            </ul>
+                      
+
+        
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer>
+                <ul class="soc">
+    <li><a class="soc-twitter" href="https://twitter.com/AllegedGents"></a></li>
+    <li><a class="soc-facebook" href="https://www.facebook.com/Alleged-Gentlemen-1266847330016192/"></a></li>
+    <li><a class="soc-googleplus" href="https://plus.google.com/102493499135690669982"></a></li>
+</ul>
+            </footer>
+        </div>
+    </form>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85159725-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+    <style>
+        @font-face {
+    font-family: 'si';
+    src: url('../fonts/socicon.eot');
+    src: url('../fonts/socicon.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/socicon.woff') format('woff'),
+         url('../fonts/socicon.ttf') format('truetype'),
+         url('../fonts/socicon.svg#icomoonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+                @font-face {
+    font-family: 'fontin';
+    src: url('../fonts/fontin-regular.eot');
+    src: url('../fonts/fontin-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/fontin-regular.woff') format('woff'),
+         url('../fonts/fontin-regular.ttf') format('truetype'),
+         url('../fonts/fontin-regular.svg#icomoonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family:si;
+        src: url(../fonts/socicon.svg) format(svg);
+    }
+}
+
+.soc {
+    overflow:hidden;
+    margin:0; padding:0;
+    list-style:none;
+}
+
+.soc li {
+    display:inline-block;
+    *display:inline;
+    zoom:1;
+}
+
+.soc li a {
+    font-family:si!important;
+    font-style:normal;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+    overflow:hidden;
+    text-decoration:none;
+    text-align:center;
+    display:block;
+    position: relative;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 26px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    color: #ffffff;
+    background-color: #B71C1C;
+}
+.soc li a:hover {
+    color: #B71C1C;
+    background-color: #ffffff;
+}
+
+.soc-icon-last{
+    margin:0 !important;
+}
+
+.soc-twitter:before {
+    content:'\e040';
+}
+.soc-facebook:before {
+    content:'\e041';
+}
+.soc-googleplus:before {
+    content:'\e042';
+}
+.soc-pinterest:before {
+    content:'\e043';
+}
+.soc-linkedin:before {
+    content:'\e049';
+}
+.soc-rss:before {
+    content:'\e00b';
+}
+
+    </style>
+    <script>
+        $(".button-collapse").sideNav();
+    </script>
+</body>
+
+    
+</html>
